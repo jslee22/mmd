@@ -23,7 +23,7 @@ COCO 格式的 json 标注文件有如下必要的字段：
     ...
 ],
 
-'annotations': [
+'Annotations': [
     {
         'segmentation': [[192.81,
             247.09,
@@ -131,7 +131,7 @@ model = dict(
 
 ```python
 
-'annotations': [
+'Annotations': [
     {
         'segmentation': [[192.81,
             247.09,

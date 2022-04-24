@@ -49,8 +49,8 @@ class COCOPanoptic(COCO):
         # anns stores 'segment_id -> annotation'
         anns, cats, imgs = {}, {}, {}
         img_to_anns, cat_to_imgs = defaultdict(list), defaultdict(list)
-        if 'annotations' in self.dataset:
-            for ann, img_info in zip(self.dataset['annotations'],
+        if 'Annotations' in self.dataset:
+            for ann, img_info in zip(self.dataset['Annotations'],
                                      self.dataset['images']):
                 img_info['segm_file'] = ann['file_name']
                 for seg_ann in ann['segments_info']:
@@ -73,8 +73,8 @@ class COCOPanoptic(COCO):
             for cat in self.dataset['categories']:
                 cats[cat['id']] = cat
 
-        if 'annotations' in self.dataset and 'categories' in self.dataset:
-            for ann in self.dataset['annotations']:
+        if 'Annotations' in self.dataset and 'categories' in self.dataset:
+            for ann in self.dataset['Annotations']:
                 for seg_ann in ann['segments_info']:
                     cat_to_imgs[seg_ann['category_id']].append(ann['image_id'])
 
@@ -90,7 +90,7 @@ class COCOPanoptic(COCO):
         """Load anns with the specified ids.
 
         self.anns is a list of annotation lists instead of a
-        list of annotations.
+        list of Annotations.
 
         Args:
             ids (int array): integer ids specifying anns
@@ -102,7 +102,7 @@ class COCOPanoptic(COCO):
 
         if hasattr(ids, '__iter__') and hasattr(ids, '__len__'):
             # self.anns is a list of annotation lists instead of
-            # a list of annotations
+            # a list of Annotations
             for id in ids:
                 anns += self.anns[id]
             return anns
@@ -320,7 +320,7 @@ class CocoPanopticDataset(CocoDataset):
         return self._parse_ann_info(self.data_infos[idx], ann_info)
 
     def _parse_ann_info(self, img_info, ann_info):
-        """Parse annotations and load panoptic ground truths.
+        """Parse Annotations and load panoptic ground truths.
 
         Args:
             img_info (int): Image info of an image.
@@ -385,7 +385,7 @@ class CocoPanopticDataset(CocoDataset):
     def _filter_imgs(self, min_size=32):
         """Filter images too small or without ground truths."""
         ids_with_ann = []
-        # check whether images have legal thing annotations.
+        # check whether images have legal thing Annotations.
         for lists in self.coco.anns.values():
             for item in lists:
                 category_id = item['category_id']
@@ -508,7 +508,7 @@ class CocoPanopticDataset(CocoDataset):
                           nproc=32):
         """Evaluate PQ according to the panoptic results json file."""
         imgs = self.coco.imgs
-        gt_json = self.coco.img_ann_map  # image to annotations
+        gt_json = self.coco.img_ann_map  # image to Annotations
         gt_json = [{
             'image_id': k,
             'segments_info': v,
@@ -516,7 +516,7 @@ class CocoPanopticDataset(CocoDataset):
         } for k, v in gt_json.items()]
         pred_json = mmcv.load(result_files['panoptic'])
         pred_json = dict(
-            (el['image_id'], el) for el in pred_json['annotations'])
+            (el['image_id'], el) for el in pred_json['Annotations'])
 
         # match the gt_anns and pred_anns in the same image
         matched_annotations_list = []

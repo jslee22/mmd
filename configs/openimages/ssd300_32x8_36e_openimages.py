@@ -57,12 +57,12 @@ data = dict(
         dataset=dict(
             type=dataset_type,
             ann_file=data_root +
-            'annotations/oidv6-train-annotations-bbox.csv',
+            'Annotations/oidv6-train-Annotations-bbox.csv',
             img_prefix=data_root + 'OpenImages/train/',
             label_file=data_root +
-            'annotations/class-descriptions-boxable.csv',
+            'Annotations/class-descriptions-boxable.csv',
             hierarchy_file=data_root +
-            'annotations/bbox_labels_600_hierarchy.json',
+            'Annotations/bbox_labels_600_hierarchy.json',
             pipeline=train_pipeline)),
     val=dict(pipeline=test_pipeline),
     test=dict(pipeline=test_pipeline))

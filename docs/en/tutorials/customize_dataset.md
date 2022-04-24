@@ -21,7 +21,7 @@ The annotation json files in COCO format has the following necessary keys:
     ...
 ],
 
-'annotations': [
+'Annotations': [
     {
         'segmentation': [[192.81,
             247.09,
@@ -129,7 +129,7 @@ Here is a valid example of annotations:
 
 ```python
 
-'annotations': [
+'Annotations': [
     {
         'segmentation': [[192.81,
             247.09,
@@ -503,7 +503,7 @@ The annotation json files in COCO Panoptic format has the following necessary ke
     ...
 ]
 
-'annotations': [
+'Annotations': [
     {
         'filename': '000000001268.jpg',
         'image_id': 1268,

@@ -1572,7 +1572,7 @@ class RandomCenterCropPad:
     3. Generate padding image with center matches the ``random_center``.
     4. Initialize the padding image with pixel value equals to ``mean``.
     5. Copy the cropped area to padding image.
-    6. Refine annotations.
+    6. Refine Annotations.
 
     Test pipeline:
 

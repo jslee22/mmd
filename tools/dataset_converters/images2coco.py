@@ -8,7 +8,7 @@ from PIL import Image
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description='Convert images to coco format without annotations')
+        description='Convert images to coco format without Annotations')
     parser.add_argument('img_path', help='The root path of images')
     parser.add_argument(
         'classes', type=str, help='The text file name of storage class list')
@@ -52,7 +52,7 @@ def cvt_to_coco_json(img_infos, classes):
     coco['images'] = []
     coco['type'] = 'instance'
     coco['categories'] = []
-    coco['annotations'] = []
+    coco['Annotations'] = []
     image_set = set()
 
     for category_id, name in enumerate(classes):
@@ -90,7 +90,7 @@ def main():
     coco_info = cvt_to_coco_json(img_infos, classes)
 
     # 3 dump
-    save_dir = os.path.join(args.img_path, '..', 'annotations')
+    save_dir = os.path.join(args.img_path, '..', 'Annotations')
     mmcv.mkdir_or_exist(save_dir)
     save_path = os.path.join(save_dir, args.out)
     mmcv.dump(coco_info, save_path)

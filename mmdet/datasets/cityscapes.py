@@ -31,7 +31,7 @@ class CityscapesDataset(CocoDataset):
         valid_inds = []
         # obtain images that contain annotation
         ids_with_ann = set(_['image_id'] for _ in self.coco.anns.values())
-        # obtain images that contain annotations of the required categories
+        # obtain images that contain Annotations of the required categories
         ids_in_cat = set()
         for i, class_id in enumerate(self.cat_ids):
             ids_in_cat |= set(self.coco.cat_img_map[class_id])
@@ -266,7 +266,7 @@ class CityscapesDataset(CocoDataset):
                                     self.seg_prefix, self.proposal_file,
                                     self.test_mode, self.filter_empty_gt)
             # TODO: remove this in the future
-            # reload annotations of correct class
+            # reload Annotations of correct class
             self_coco.CLASSES = self.CLASSES
             self_coco.data_infos = self_coco.load_annotations(self.ann_file)
             eval_results.update(

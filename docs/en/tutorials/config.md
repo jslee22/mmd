@@ -256,17 +256,17 @@ img_norm_cfg = dict(  # Image normalization config to normalize the input images
 train_pipeline = [  # Training pipeline
     dict(type='LoadImageFromFile'),  # First pipeline to load images from file path
     dict(
-        type='LoadAnnotations',  # Second pipeline to load annotations for current image
+        type='LoadAnnotations',  # Second pipeline to load Annotations for current image
         with_bbox=True,  # Whether to use bounding box, True for detection
         with_mask=True,  # Whether to use instance mask, True for instance segmentation
         poly2mask=False),  # Whether to convert the polygon mask to instance mask, set False for acceleration and to save memory
     dict(
-        type='Resize',  # Augmentation pipeline that resize the images and their annotations
+        type='Resize',  # Augmentation pipeline that resize the images and their Annotations
         img_scale=(1333, 800),  # The largest scale of image
         keep_ratio=True
     ),  # whether to keep the ratio between height and width.
     dict(
-        type='RandomFlip',  # Augmentation pipeline that flip the images and their annotations
+        type='RandomFlip',  # Augmentation pipeline that flip the images and their Annotations
         flip_ratio=0.5),  # The ratio or probability to flip
     dict(
         type='Normalize',  # Augmentation pipeline that normalize the input images
@@ -312,7 +312,7 @@ data = dict(
     workers_per_gpu=2,  # Worker to pre-fetch data for each single GPU
     train=dict(  # Train dataset config
         type='CocoDataset',  # Type of dataset, refer to https://github.com/open-mmlab/mmdetection/blob/master/mmdet/datasets/coco.py#L19 for details.
-        ann_file='data/coco/annotations/instances_train2017.json',  # Path of annotation file
+        ann_file='data/coco/Annotations/instances_train2017.json',  # Path of annotation file
         img_prefix='data/coco/train2017/',  # Prefix of image path
         pipeline=[  # pipeline, this is passed by the train_pipeline created before.
             dict(type='LoadImageFromFile'),
@@ -336,7 +336,7 @@ data = dict(
         ]),
     val=dict(  # Validation dataset config
         type='CocoDataset',
-        ann_file='data/coco/annotations/instances_val2017.json',
+        ann_file='data/coco/Annotations/instances_val2017.json',
         img_prefix='data/coco/val2017/',
         pipeline=[  # Pipeline is passed by test_pipeline created before
             dict(type='LoadImageFromFile'),
@@ -359,7 +359,7 @@ data = dict(
         ]),
     test=dict(  # Test dataset config, modify the ann_file for test-dev/test submission
         type='CocoDataset',
-        ann_file='data/coco/annotations/instances_val2017.json',
+        ann_file='data/coco/Annotations/instances_val2017.json',
         img_prefix='data/coco/val2017/',
         pipeline=[  # Pipeline is passed by test_pipeline created before
             dict(type='LoadImageFromFile'),

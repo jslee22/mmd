@@ -117,7 +117,7 @@ def _create_panoptic_style_json(json_name):
 
     fake_json = {
         'images': images,
-        'annotations': annotations,
+        'Annotations': annotations,
         'categories': categories
     }
     mmcv.dump(fake_json, json_name)
@@ -210,7 +210,7 @@ def _create_panoptic_gt_annotations(ann_file):
 
     gt_json = {
         'images': images,
-        'annotations': annotations,
+        'Annotations': annotations,
         'categories': categories
     }
 
@@ -314,14 +314,14 @@ def test_panoptic_evaluation():
         results, jsonfile_prefix=outfile_prefix)
 
     imgs = dataset.coco.imgs
-    gt_json = dataset.coco.img_ann_map  # image to annotations
+    gt_json = dataset.coco.img_ann_map  # image to Annotations
     gt_json = [{
         'image_id': k,
         'segments_info': v,
         'file_name': imgs[k]['segm_file']
     } for k, v in gt_json.items()]
     pred_json = mmcv.load(result_files['panoptic'])
-    pred_json = dict((el['image_id'], el) for el in pred_json['annotations'])
+    pred_json = dict((el['image_id'], el) for el in pred_json['Annotations'])
 
     # match the gt_anns and pred_anns in the same image
     matched_annotations_list = []
@@ -401,7 +401,7 @@ def _create_instance_segmentation_gt_annotations(ann_file):
 
     gt_json = {
         'images': images,
-        'annotations': annotations,
+        'Annotations': annotations,
         'categories': categories
     }
 

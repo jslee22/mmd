@@ -124,18 +124,18 @@ def make_gt_area_group_numbers_plot(cocoEval, outDir, verbose=True):
     areaRngLbl2Number = get_gt_area_group_numbers(cocoEval)
     areaRngLbl = areaRngLbl2Number.keys()
     if verbose:
-        print('number of annotations per area group:', areaRngLbl2Number)
+        print('number of Annotations per area group:', areaRngLbl2Number)
 
     # Init figure
     fig, ax = plt.subplots()
     x = np.arange(len(areaRngLbl))  # the areaNames locations
     width = 0.60  # the width of the bars
-    figure_title = 'number of annotations per area group'
+    figure_title = 'number of Annotations per area group'
 
     rects = ax.bar(x, areaRngLbl2Number.values(), width)
 
     # Add some text for labels, title and custom x-axis tick labels, etc.
-    ax.set_ylabel('Number of annotations')
+    ax.set_ylabel('Number of Annotations')
     ax.set_title(figure_title)
     ax.set_xticks(x)
     ax.set_xticklabels(areaRngLbl)
@@ -162,7 +162,7 @@ def make_gt_area_histogram_plot(cocoEval, outDir):
 
     # Add some text for labels, title and custom x-axis tick labels, etc.
     ax.set_xlabel('Squareroot Area')
-    ax.set_ylabel('Number of annotations')
+    ax.set_ylabel('Number of Annotations')
     ax.set_title(figure_title)
 
     # Save plot
@@ -183,21 +183,21 @@ def analyze_individual_category(k,
     dt = copy.deepcopy(cocoDt)
     nm = cocoGt.loadCats(catId)[0]
     imgIds = cocoGt.getImgIds()
-    dt_anns = dt.dataset['annotations']
+    dt_anns = dt.dataset['Annotations']
     select_dt_anns = []
     for ann in dt_anns:
         if ann['category_id'] == catId:
             select_dt_anns.append(ann)
-    dt.dataset['annotations'] = select_dt_anns
+    dt.dataset['Annotations'] = select_dt_anns
     dt.createIndex()
     # compute precision but ignore superclass confusion
     gt = copy.deepcopy(cocoGt)
     child_catIds = gt.getCatIds(supNms=[nm['supercategory']])
-    for idx, ann in enumerate(gt.dataset['annotations']):
+    for idx, ann in enumerate(gt.dataset['Annotations']):
         if ann['category_id'] in child_catIds and ann['category_id'] != catId:
-            gt.dataset['annotations'][idx]['ignore'] = 1
-            gt.dataset['annotations'][idx]['iscrowd'] = 1
-            gt.dataset['annotations'][idx]['category_id'] = catId
+            gt.dataset['Annotations'][idx]['ignore'] = 1
+            gt.dataset['Annotations'][idx]['iscrowd'] = 1
+            gt.dataset['Annotations'][idx]['category_id'] = catId
     cocoEval = COCOeval(gt, copy.deepcopy(dt), iou_type)
     cocoEval.params.imgIds = imgIds
     cocoEval.params.maxDets = [100]
@@ -212,11 +212,11 @@ def analyze_individual_category(k,
     ps_['ps_supercategory'] = ps_supercategory
     # compute precision but ignore any class confusion
     gt = copy.deepcopy(cocoGt)
-    for idx, ann in enumerate(gt.dataset['annotations']):
+    for idx, ann in enumerate(gt.dataset['Annotations']):
         if ann['category_id'] != catId:
-            gt.dataset['annotations'][idx]['ignore'] = 1
-            gt.dataset['annotations'][idx]['iscrowd'] = 1
-            gt.dataset['annotations'][idx]['category_id'] = catId
+            gt.dataset['Annotations'][idx]['ignore'] = 1
+            gt.dataset['Annotations'][idx]['iscrowd'] = 1
+            gt.dataset['Annotations'][idx]['category_id'] = catId
     cocoEval = COCOeval(gt, copy.deepcopy(dt), iou_type)
     cocoEval.params.imgIds = imgIds
     cocoEval.params.maxDets = [100]
@@ -311,7 +311,7 @@ def main():
     parser.add_argument('out_dir', help='dir to save analyze result images')
     parser.add_argument(
         '--ann',
-        default='data/coco/annotations/instances_val2017.json',
+        default='data/coco/Annotations/instances_val2017.json',
         help='annotation file path')
     parser.add_argument(
         '--types', type=str, nargs='+', default=['bbox'], help='result types')

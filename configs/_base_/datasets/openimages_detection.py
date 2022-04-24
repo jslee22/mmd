@@ -34,32 +34,32 @@ data = dict(
     workers_per_gpu=0,  # workers_per_gpu > 0 may occur out of memory
     train=dict(
         type=dataset_type,
-        ann_file=data_root + 'annotations/oidv6-train-annotations-bbox.csv',
+        ann_file=data_root + 'Annotations/oidv6-train-Annotations-bbox.csv',
         img_prefix=data_root + 'OpenImages/train/',
-        label_file=data_root + 'annotations/class-descriptions-boxable.csv',
+        label_file=data_root + 'Annotations/class-descriptions-boxable.csv',
         hierarchy_file=data_root +
-        'annotations/bbox_labels_600_hierarchy.json',
+        'Annotations/bbox_labels_600_hierarchy.json',
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
-        ann_file=data_root + 'annotations/validation-annotations-bbox.csv',
+        ann_file=data_root + 'Annotations/validation-Annotations-bbox.csv',
         img_prefix=data_root + 'OpenImages/validation/',
-        label_file=data_root + 'annotations/class-descriptions-boxable.csv',
+        label_file=data_root + 'Annotations/class-descriptions-boxable.csv',
         hierarchy_file=data_root +
-        'annotations/bbox_labels_600_hierarchy.json',
-        meta_file=data_root + 'annotations/validation-image-metas.pkl',
+        'Annotations/bbox_labels_600_hierarchy.json',
+        meta_file=data_root + 'Annotations/validation-image-metas.pkl',
         image_level_ann_file=data_root +
-        'annotations/validation-annotations-human-imagelabels-boxable.csv',
+        'Annotations/validation-Annotations-human-imagelabels-boxable.csv',
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
-        ann_file=data_root + 'annotations/validation-annotations-bbox.csv',
+        ann_file=data_root + 'Annotations/validation-Annotations-bbox.csv',
         img_prefix=data_root + 'OpenImages/validation/',
-        label_file=data_root + 'annotations/class-descriptions-boxable.csv',
+        label_file=data_root + 'Annotations/class-descriptions-boxable.csv',
         hierarchy_file=data_root +
-        'annotations/bbox_labels_600_hierarchy.json',
-        meta_file=data_root + 'annotations/validation-image-metas.pkl',
+        'Annotations/bbox_labels_600_hierarchy.json',
+        meta_file=data_root + 'Annotations/validation-image-metas.pkl',
         image_level_ann_file=data_root +
-        'annotations/validation-annotations-human-imagelabels-boxable.csv',
+        'Annotations/validation-Annotations-human-imagelabels-boxable.csv',
         pipeline=test_pipeline))
 evaluation = dict(interval=1, metric='mAP')

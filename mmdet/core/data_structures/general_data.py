@@ -11,7 +11,7 @@ class GeneralData(NiceRepr):
     """A general data structure of OpenMMlab.
 
     A data structure that stores the meta information,
-    the annotations of the images or the model predictions,
+    the Annotations of the images or the model predictions,
     which can be used in communication between components.
 
     The attributes in `GeneralData` are divided into two parts,
@@ -39,7 +39,7 @@ class GeneralData(NiceRepr):
         meta_info (dict, optional): A dict contains the meta information
             of single image. such as `img_shape`, `scale_factor`, etc.
             Default: None.
-        data (dict, optional): A dict contains annotations of single image or
+        data (dict, optional): A dict contains Annotations of single image or
             model predictions. Default: None.
 
     Examples:
@@ -130,7 +130,7 @@ class GeneralData(NiceRepr):
         """Update a dict to `data_fields`.
 
         Args:
-            data (dict): A dict contains annotations of image or
+            data (dict): A dict contains Annotations of image or
                 model predictions. Default: None.
         """
         assert isinstance(data,
@@ -145,7 +145,7 @@ class GeneralData(NiceRepr):
             meta_info (dict, optional): A dict contains the meta information
                 of image. such as `img_shape`, `scale_factor`, etc.
                 Default: None.
-            data (dict, optional): A dict contains annotations of image or
+            data (dict, optional): A dict contains Annotations of image or
                 model predictions. Default: None.
         """
         new_data = self.__class__()

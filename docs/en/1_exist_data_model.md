@@ -239,7 +239,7 @@ pip install cityscapesscripts
 python tools/dataset_converters/cityscapes.py \
     ./data/cityscapes \
     --nproc 8 \
-    --out-dir ./data/cityscapes/annotations
+    --out-dir ./data/cityscapes/Annotations
 ```
 
 TODO: CHANGE TO THE NEW PATH

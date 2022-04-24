@@ -33,7 +33,7 @@ class OpenImagesDataset(CustomDataset):
                 Default: None.
             get_metas (bool): Whether to get image metas in testing or
                 validation time. This should be `True` during evaluation.
-                Default: True. The OpenImages annotations do not have image
+                Default: True. The OpenImages Annotations do not have image
                 metas (width and height of the image), which will be used
                 during evaluation. We provide two ways to get image metas
                 in `OpenImagesDataset`:
@@ -69,7 +69,7 @@ class OpenImagesDataset(CustomDataset):
                  **kwargs):
         self.cat2label = defaultdict(str)
         self.index_dict = {}
-        # need get `index_dict` before load annotations
+        # need get `index_dict` before load Annotations
         class_names = self.get_classes_from_csv(label_file)
         super(OpenImagesDataset, self).__init__(**kwargs)
         self.CLASSES = class_names
@@ -141,7 +141,7 @@ class OpenImagesDataset(CustomDataset):
 
         Returns:
             list[dict]:  Data infos where each item of the list
-            indicates an image. Keys of annotations are:
+            indicates an image. Keys of Annotations are:
 
                 - `img_id` (str): Image name.
                 - `filename` (str): Image name with suffix.
@@ -468,7 +468,7 @@ class OpenImagesDataset(CustomDataset):
         return det_results
 
     def load_image_label_from_csv(self, image_level_ann_file):
-        """Load image level annotations from csv style ann_file.
+        """Load image level Annotations from csv style ann_file.
 
         Args:
             image_level_ann_file (str): CSV style image level annotation
@@ -751,7 +751,7 @@ class OpenImagesChallengeDataset(OpenImagesDataset):
         return ann_infos
 
     def prepare_train_img(self, idx):
-        """Get training data and annotations after pipeline."""
+        """Get training data and Annotations after pipeline."""
         ann_info = self.data_infos[idx]
         results = dict(
             img_info=ann_info['img_info'],
@@ -805,7 +805,7 @@ class OpenImagesChallengeDataset(OpenImagesDataset):
         return data_infos
 
     def load_image_label_from_csv(self, image_level_ann_file):
-        """Load image level annotations from csv style ann_file.
+        """Load image level Annotations from csv style ann_file.
 
         Args:
             image_level_ann_file (str): CSV style image level annotation

@@ -19,8 +19,8 @@ def bbox_map_eval(det_result, annotation):
         det_result (list[list]): [[cls1_det, cls2_det, ...], ...].
             The outer list indicates images, and the inner list indicates
             per-class detected bboxes.
-        annotation (dict): Ground truth annotations where keys of
-             annotations are:
+        annotation (dict): Ground truth Annotations where keys of
+             Annotations are:
 
             - bboxes: numpy array of shape (n, 4)
             - labels: numpy array of shape (n, )

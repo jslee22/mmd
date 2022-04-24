@@ -394,7 +394,7 @@ def imshow_gt_det_bboxes(img,
 
     Args:
       img (str | ndarray): The image to be displayed.
-      annotation (dict): Ground truth annotations where contain keys of
+      annotation (dict): Ground truth Annotations where contain keys of
           'gt_bboxes' and 'gt_labels' or 'gt_masks'.
       result (tuple[list] | list): The detection result, can be either
           (bbox, segm) or just bbox.

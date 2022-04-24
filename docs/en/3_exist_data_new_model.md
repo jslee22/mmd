@@ -51,7 +51,7 @@ The cityscapes annotations have to be converted into the coco format using `tool
 
 ```shell
 pip install cityscapesscripts
-python tools/dataset_converters/cityscapes.py ./data/cityscapes --nproc 8 --out-dir ./data/cityscapes/annotations
+python tools/dataset_converters/cityscapes.py ./data/cityscapes --nproc 8 --out-dir ./data/cityscapes/Annotations
 ```
 
 Currently the config files in `cityscapes` use COCO pre-trained weights to initialize.

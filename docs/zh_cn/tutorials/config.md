@@ -295,7 +295,7 @@ data = dict(
     workers_per_gpu=2,  # 单个 GPU 分配的数据加载线程数
     train=dict(  # 训练数据集配置
         type='CocoDataset',  # 数据集的类别, 更多细节请参考 https://github.com/open-mmlab/mmdetection/blob/master/mmdet/datasets/coco.py#L19。
-        ann_file='data/coco/annotations/instances_train2017.json',  # 注释文件路径
+        ann_file='data/coco/Annotations/instances_train2017.json',  # 注释文件路径
         img_prefix='data/coco/train2017/',  # 图片路径前缀
         pipeline=[  # 流程, 这是由之前创建的 train_pipeline 传递的。
             dict(type='LoadImageFromFile'),
@@ -319,7 +319,7 @@ data = dict(
         ]),
     val=dict(  # 验证数据集的配置
         type='CocoDataset',
-        ann_file='data/coco/annotations/instances_val2017.json',
+        ann_file='data/coco/Annotations/instances_val2017.json',
         img_prefix='data/coco/val2017/',
         pipeline=[  # 由之前创建的 test_pipeline 传递的流程。
             dict(type='LoadImageFromFile'),
@@ -342,7 +342,7 @@ data = dict(
         ]),
     test=dict(  # 测试数据集配置，修改测试开发/测试(test-dev/test)提交的 ann_file
         type='CocoDataset',
-        ann_file='data/coco/annotations/instances_val2017.json',
+        ann_file='data/coco/Annotations/instances_val2017.json',
         img_prefix='data/coco/val2017/',
         pipeline=[  # 由之前创建的 test_pipeline 传递的流程。
             dict(type='LoadImageFromFile'),

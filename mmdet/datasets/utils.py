@@ -73,14 +73,14 @@ def replace_ImageToTensor(pipelines):
 
 
 def get_loading_pipeline(pipeline):
-    """Only keep loading image and annotations related configuration.
+    """Only keep loading image and Annotations related configuration.
 
     Args:
         pipeline (list[dict]): Data pipeline configs.
 
     Returns:
         list[dict]: The new pipeline list with only keep
-            loading image and annotations related configuration.
+            loading image and Annotations related configuration.
 
     Examples:
         >>> pipelines = [
@@ -110,7 +110,7 @@ def get_loading_pipeline(pipeline):
             loading_pipeline_cfg.append(cfg)
     assert len(loading_pipeline_cfg) == 2, \
         'The data pipeline in your config file must include ' \
-        'loading image and annotations related pipeline.'
+        'loading image and Annotations related pipeline.'
     return loading_pipeline_cfg
 
 

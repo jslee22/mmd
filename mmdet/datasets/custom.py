@@ -89,7 +89,7 @@ class CustomDataset(Dataset):
                     or osp.isabs(self.proposal_file)):
                 self.proposal_file = osp.join(self.data_root,
                                               self.proposal_file)
-        # load annotations (and proposals)
+        # load Annotations (and proposals)
         if hasattr(self.file_client, 'get_local_path'):
             with self.file_client.get_local_path(self.ann_file) as local_path:
                 self.data_infos = self.load_annotations(local_path)
@@ -116,7 +116,7 @@ class CustomDataset(Dataset):
         else:
             self.proposals = None
 
-        # filter images too small and containing no annotations
+        # filter images too small and containing no Annotations
         if not test_mode:
             valid_inds = self._filter_imgs()
             self.data_infos = [self.data_infos[i] for i in valid_inds]
@@ -222,7 +222,7 @@ class CustomDataset(Dataset):
             return data
 
     def prepare_train_img(self, idx):
-        """Get training data and annotations after pipeline.
+        """Get training data and Annotations after pipeline.
 
         Args:
             idx (int): Index of data.

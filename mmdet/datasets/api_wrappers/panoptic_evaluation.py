@@ -178,7 +178,7 @@ def pq_compute_multi_core(matched_annotations_list,
 
     Args:
         matched_annotations_list (list): The matched annotation list. Each
-            element is a tuple of annotations of the same image with the
+            element is a tuple of Annotations of the same image with the
             format (gt_anns, pred_anns).
         gt_folder (str): The path of the ground truth images.
         pred_folder (str): The path of the prediction images.

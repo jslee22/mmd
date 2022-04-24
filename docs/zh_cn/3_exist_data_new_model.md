@@ -51,7 +51,7 @@ export MMDET_DATASETS=$data_root
 
 ```shell
 pip install cityscapesscripts
-python tools/dataset_converters/cityscapes.py ./data/cityscapes --nproc 8 --out-dir ./data/cityscapes/annotations
+python tools/dataset_converters/cityscapes.py ./data/cityscapes --nproc 8 --out-dir ./data/cityscapes/Annotations
 ```
 
 目前在 `cityscapes `文件夹中的配置文件所对应模型是采用 COCO 预训练权重进行初始化的。

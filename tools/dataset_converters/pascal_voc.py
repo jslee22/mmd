@@ -100,7 +100,7 @@ def cvt_to_coco_json(annotations):
     coco['images'] = []
     coco['type'] = 'instance'
     coco['categories'] = []
-    coco['annotations'] = []
+    coco['Annotations'] = []
     image_set = set()
 
     def addAnnItem(annotation_id, image_id, category_id, bbox, difficult_flag):
@@ -137,7 +137,7 @@ def cvt_to_coco_json(annotations):
         annotation_item['bbox'] = xywh.astype(int).tolist()
         annotation_item['category_id'] = int(category_id)
         annotation_item['id'] = int(annotation_id)
-        coco['annotations'].append(annotation_item)
+        coco['Annotations'].append(annotation_item)
         return annotation_id + 1
 
     for category_id, name in enumerate(voc_classes()):
@@ -182,7 +182,7 @@ def cvt_to_coco_json(annotations):
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description='Convert PASCAL VOC annotations to mmdetection format')
+        description='Convert PASCAL VOC Annotations to mmdetection format')
     parser.add_argument('devkit_path', help='pascal voc devkit path')
     parser.add_argument('-o', '--out-dir', help='output path')
     parser.add_argument(

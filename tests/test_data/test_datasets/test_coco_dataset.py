@@ -42,7 +42,7 @@ def _create_ids_error_coco_json(json_name):
 
     fake_json = {
         'images': [image],
-        'annotations': [annotation_1, annotation_2],
+        'Annotations': [annotation_1, annotation_2],
         'categories': categories
     }
     mmcv.dump(fake_json, json_name)

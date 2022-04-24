@@ -278,7 +278,7 @@ def test_openimages_dataset():
         meta_file=meta_file,
         pipeline=[])
     # test evaluation with using group_of, adding father classes to
-    # GT and annotations, and considering image_level_image,
+    # GT and Annotations, and considering image_level_image,
     # In the first label (Sports equipment): tp = [0, 1, 0, 0, 1],
     # fp = [1, 0, 1, 1, 0]
     # In the second label (Ball), tp = [0, 1, 0, 1], fp = [1, 0, 1, 0].
@@ -298,7 +298,7 @@ def test_openimages_dataset():
         pipeline=[])
 
     # test evaluation with using group_of, adding father classes to
-    # GT and annotations, and not considering image_level_image,
+    # GT and Annotations, and not considering image_level_image,
     # In the first label (Sports equipment): tp = [0, 1, 0, 0, 1],
     # fp = [1, 0, 1, 1, 0]
     # In the second label (Ball), tp = [0, 1, 0, 1], fp = [1, 0, 1, 0].

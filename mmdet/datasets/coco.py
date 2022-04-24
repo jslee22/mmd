@@ -22,21 +22,27 @@ from .custom import CustomDataset
 @DATASETS.register_module()
 class CocoDataset(CustomDataset):
 
-    CLASSES = ('person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus',
-               'train', 'truck', 'boat', 'traffic light', 'fire hydrant',
-               'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog',
-               'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe',
-               'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee',
-               'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat',
-               'baseball glove', 'skateboard', 'surfboard', 'tennis racket',
-               'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl',
-               'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot',
-               'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch',
-               'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop',
-               'mouse', 'remote', 'keyboard', 'cell phone', 'microwave',
-               'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock',
-               'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush')
-
+    # CLASSES = ('person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus',
+    #            'train', 'truck', 'boat', 'traffic light', 'fire hydrant',
+    #            'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog',
+    #            'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe',
+    #            'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee',
+    #            'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat',
+    #            'baseball glove', 'skateboard', 'surfboard', 'tennis racket',
+    #            'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl',
+    #            'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot',
+    #            'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch',
+    #            'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop',
+    #            'mouse', 'remote', 'keyboard', 'cell phone', 'microwave',
+    #            'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock',
+    #            'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush')
+    CLASSES = ("6",  "7",  "8",  "9",
+        "10", "25", "41", "105",
+        "110","115","148","156",
+        "222","228","235","256",
+        "280","310","387","392",
+        "394","398","401","402",
+        "430","480","485","673")
     PALETTE = [(220, 20, 60), (119, 11, 32), (0, 0, 142), (0, 0, 230),
                (106, 0, 228), (0, 60, 100), (0, 80, 100), (0, 0, 70),
                (0, 0, 192), (250, 170, 30), (100, 170, 30), (220, 220, 0),
@@ -123,7 +129,7 @@ class CocoDataset(CustomDataset):
         valid_inds = []
         # obtain images that contain annotation
         ids_with_ann = set(_['image_id'] for _ in self.coco.anns.values())
-        # obtain images that contain annotations of the required categories
+        # obtain images that contain Annotations of the required categories
         ids_in_cat = set()
         for i, class_id in enumerate(self.cat_ids):
             ids_in_cat |= set(self.coco.cat_img_map[class_id])
@@ -147,11 +153,11 @@ class CocoDataset(CustomDataset):
 
         Args:
             ann_info (list[dict]): Annotation info of an image.
-            with_mask (bool): Whether to parse mask annotations.
+            with_mask (bool): Whether to parse mask Annotations.
 
         Returns:
             dict: A dict containing the following keys: bboxes, bboxes_ignore,\
-                labels, masks, seg_map. "masks" are raw annotations and not \
+                labels, masks, seg_map. "masks" are raw Annotations and not \
                 decoded into binary masks.
         """
         gt_bboxes = []

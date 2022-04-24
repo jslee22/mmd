@@ -163,7 +163,7 @@ python tools/test.py \
 python tools/analysis_tools/coco_error_analysis.py \
        results.bbox.json \
        results \
-       --ann=data/coco/annotations/instances_val2017.json \
+       --ann=data/coco/Annotations/instances_val2017.json \
 ```
 
 2. Get COCO segmentation error results per category , save analyze result images to the directory `results/`
@@ -172,7 +172,7 @@ python tools/analysis_tools/coco_error_analysis.py \
 python tools/analysis_tools/coco_error_analysis.py \
        results.segm.json \
        results \
-       --ann=data/coco/annotations/instances_val2017.json \
+       --ann=data/coco/Annotations/instances_val2017.json \
        --types='segm'
 ```
 

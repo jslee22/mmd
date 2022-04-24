@@ -204,7 +204,7 @@ class LoadMultiChannelImageFromFiles:
 
 @PIPELINES.register_module()
 class LoadAnnotations:
-    """Load multiple types of annotations.
+    """Load multiple types of Annotations.
 
     Args:
         with_bbox (bool): Whether to parse and load the bbox annotation.
@@ -243,13 +243,13 @@ class LoadAnnotations:
         self.file_client = None
 
     def _load_bboxes(self, results):
-        """Private function to load bounding box annotations.
+        """Private function to load bounding box Annotations.
 
         Args:
             results (dict): Result dict from :obj:`mmdet.CustomDataset`.
 
         Returns:
-            dict: The dict contains loaded bounding box annotations.
+            dict: The dict contains loaded bounding box Annotations.
         """
 
         ann_info = results['ann_info']
@@ -276,13 +276,13 @@ class LoadAnnotations:
         return results
 
     def _load_labels(self, results):
-        """Private function to load label annotations.
+        """Private function to load label Annotations.
 
         Args:
             results (dict): Result dict from :obj:`mmdet.CustomDataset`.
 
         Returns:
-            dict: The dict contains loaded label annotations.
+            dict: The dict contains loaded label Annotations.
         """
 
         results['gt_labels'] = results['ann_info']['labels'].copy()
@@ -333,13 +333,13 @@ class LoadAnnotations:
         return valid_polygons
 
     def _load_masks(self, results):
-        """Private function to load mask annotations.
+        """Private function to load mask Annotations.
 
         Args:
             results (dict): Result dict from :obj:`mmdet.CustomDataset`.
 
         Returns:
-            dict: The dict contains loaded mask annotations.
+            dict: The dict contains loaded mask Annotations.
                 If ``self.poly2mask`` is set ``True``, `gt_mask` will contain
                 :obj:`PolygonMasks`. Otherwise, :obj:`BitmapMasks` is used.
         """
@@ -358,13 +358,13 @@ class LoadAnnotations:
         return results
 
     def _load_semantic_seg(self, results):
-        """Private function to load semantic segmentation annotations.
+        """Private function to load semantic segmentation Annotations.
 
         Args:
             results (dict): Result dict from :obj:`dataset`.
 
         Returns:
-            dict: The dict contains loaded semantic segmentation annotations.
+            dict: The dict contains loaded semantic segmentation Annotations.
         """
 
         if self.file_client is None:
@@ -379,14 +379,14 @@ class LoadAnnotations:
         return results
 
     def __call__(self, results):
-        """Call function to load multiple types annotations.
+        """Call function to load multiple types Annotations.
 
         Args:
             results (dict): Result dict from :obj:`mmdet.CustomDataset`.
 
         Returns:
             dict: The dict contains loaded bounding box, label, mask and
-                semantic segmentation annotations.
+                semantic segmentation Annotations.
         """
 
         if self.with_bbox:
@@ -414,7 +414,7 @@ class LoadAnnotations:
 
 @PIPELINES.register_module()
 class LoadPanopticAnnotations(LoadAnnotations):
-    """Load multiple types of panoptic annotations.
+    """Load multiple types of panoptic Annotations.
 
     Args:
         with_bbox (bool): Whether to parse and load the bbox annotation.
@@ -452,7 +452,7 @@ class LoadPanopticAnnotations(LoadAnnotations):
             file_client_args=file_client_args)
 
     def _load_masks_and_semantic_segs(self, results):
-        """Private function to load mask and semantic segmentation annotations.
+        """Private function to load mask and semantic segmentation Annotations.
 
         In gt_semantic_seg, the foreground label is from `0` to
         `num_things - 1`, the background label is from `num_things` to
@@ -463,7 +463,7 @@ class LoadPanopticAnnotations(LoadAnnotations):
 
         Returns:
             dict: The dict contains loaded mask and semantic segmentation
-                annotations. `BitmapMasks` is used for mask annotations.
+                Annotations. `BitmapMasks` is used for mask Annotations.
         """
 
         if self.file_client is None:
@@ -499,14 +499,14 @@ class LoadPanopticAnnotations(LoadAnnotations):
         return results
 
     def __call__(self, results):
-        """Call function to load multiple types panoptic annotations.
+        """Call function to load multiple types panoptic Annotations.
 
         Args:
             results (dict): Result dict from :obj:`mmdet.CustomDataset`.
 
         Returns:
             dict: The dict contains loaded bounding box, label, mask and
-                semantic segmentation annotations.
+                semantic segmentation Annotations.
         """
 
         if self.with_bbox:
@@ -544,7 +544,7 @@ class LoadProposals:
             results (dict): Result dict from :obj:`mmdet.CustomDataset`.
 
         Returns:
-            dict: The dict contains loaded proposal annotations.
+            dict: The dict contains loaded proposal Annotations.
         """
 
         proposals = results['proposals']
@@ -570,7 +570,7 @@ class LoadProposals:
 
 @PIPELINES.register_module()
 class FilterAnnotations:
-    """Filter invalid annotations.
+    """Filter invalid Annotations.
 
     Args:
         min_gt_bbox_wh (tuple[int]): Minimum width and height of ground truth

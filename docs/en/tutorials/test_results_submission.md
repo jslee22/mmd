@@ -29,7 +29,7 @@ rm -rf data/coco/test2017.zip data/coco/image_info_test2017.zip data/coco/panopt
 - Run the following code to update category information in testing image info. Since the attribute `isthing` is missing in category information of 'image_info_test-dev2017.json', we need to update it with the category information in 'panoptic_val2017.json'.
 
 ```shell
-python tools/misc/gen_coco_panoptic_test_info.py data/coco/annotations
+python tools/misc/gen_coco_panoptic_test_info.py data/coco/Annotations
 ```
 
 After completing the above preparations, your directory structure of `data` should be like this:
@@ -58,7 +58,7 @@ CUDA_VISIBLE_DEVICES=0 python tools/test.py \
     ${CONFIG_FILE} \
     ${CHECKPOINT_FILE} \
     --format-only \
-    --cfg-options data.test.ann_file=data/coco/annotations/panoptic_image_info_test-dev2017.json data.test.img_prefix=data/coco/test2017 \
+    --cfg-options data.test.ann_file=data/coco/Annotations/panoptic_image_info_test-dev2017.json data.test.img_prefix=data/coco/test2017 \
     --eval-options jsonfile_prefix=${WORK_DIR}/results
 
 # test with four gpus
@@ -67,7 +67,7 @@ CUDA_VISIBLE_DEVICES=0,1,3,4 bash tools/dist_test.sh \
     ${CHECKPOINT_FILE} \
     4 \ # four gpus
     --format-only \
-    --cfg-options data.test.ann_file=data/coco/annotations/panoptic_image_info_test-dev2017.json data.test.img_prefix=data/coco/test2017 \
+    --cfg-options data.test.ann_file=data/coco/Annotations/panoptic_image_info_test-dev2017.json data.test.img_prefix=data/coco/test2017 \
     --eval-options jsonfile_prefix=${WORK_DIR}/results
 
 # test with slurm
@@ -77,7 +77,7 @@ GPUS=8 tools/slurm_test.sh \
     ${CONFIG_FILE} \
     ${CHECKPOINT_FILE} \
     --format-only \
-    --cfg-options data.test.ann_file=data/coco/annotations/panoptic_image_info_test-dev2017.json data.test.img_prefix=data/coco/test2017 \
+    --cfg-options data.test.ann_file=data/coco/Annotations/panoptic_image_info_test-dev2017.json data.test.img_prefix=data/coco/test2017 \
     --eval-options jsonfile_prefix=${WORK_DIR}/results
 ```
 
@@ -91,7 +91,7 @@ CUDA_VISIBLE_DEVICES=0 python tools/test.py \
     configs/maskformer/maskformer_r50_mstrain_16x1_75e_coco.py \
     checkpoints/maskformer_r50_mstrain_16x1_75e_coco_20220221_141956-bc2699cb.pth \
     --format-only \
-    --cfg-options data.test.ann_file=data/coco/annotations/panoptic_image_info_test-dev2017.json data.test.img_prefix=data/coco/test2017 \
+    --cfg-options data.test.ann_file=data/coco/Annotations/panoptic_image_info_test-dev2017.json data.test.img_prefix=data/coco/test2017 \
     --eval-options jsonfile_prefix=work_dirs/maskformer/results
 ```
 

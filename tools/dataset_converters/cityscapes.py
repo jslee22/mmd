@@ -44,8 +44,8 @@ def load_img_info(files):
     unique_inst_ids = np.unique(inst_img[inst_img >= 24])
     anno_info = []
     for inst_id in unique_inst_ids:
-        # For non-crowd annotations, inst_id // 1000 is the label_id
-        # Crowd annotations have <1000 instance ids
+        # For non-crowd Annotations, inst_id // 1000 is the label_id
+        # Crowd Annotations have <1000 instance ids
         label_id = inst_id // 1000 if inst_id >= 1000 else inst_id
         label = CSLabels.id2label[label_id]
         if not label.hasInstances or label.ignoreInEval:
@@ -88,7 +88,7 @@ def cvt_annotations(image_infos, out_json_name):
     ann_id = 0
     out_json['images'] = []
     out_json['categories'] = []
-    out_json['annotations'] = []
+    out_json['Annotations'] = []
     for image_info in image_infos:
         image_info['id'] = img_id
         anno_infos = image_info.pop('anno_info')
@@ -96,7 +96,7 @@ def cvt_annotations(image_infos, out_json_name):
         for anno_info in anno_infos:
             anno_info['image_id'] = img_id
             anno_info['id'] = ann_id
-            out_json['annotations'].append(anno_info)
+            out_json['Annotations'].append(anno_info)
             ann_id += 1
         img_id += 1
     for label in CSLabels.labels:
@@ -104,8 +104,8 @@ def cvt_annotations(image_infos, out_json_name):
             cat = dict(id=label.id, name=label.name)
             out_json['categories'].append(cat)
 
-    if len(out_json['annotations']) == 0:
-        out_json.pop('annotations')
+    if len(out_json['Annotations']) == 0:
+        out_json.pop('Annotations')
 
     mmcv.dump(out_json, out_json_name)
     return out_json
@@ -113,7 +113,7 @@ def cvt_annotations(image_infos, out_json_name):
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description='Convert Cityscapes annotations to COCO format')
+        description='Convert Cityscapes Annotations to COCO format')
     parser.add_argument('cityscapes_path', help='cityscapes data path')
     parser.add_argument('--img-dir', default='leftImg8bit', type=str)
     parser.add_argument('--gt-dir', default='gtFine', type=str)

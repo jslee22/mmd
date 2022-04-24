@@ -19,7 +19,7 @@ class XMLDataset(CustomDataset):
             boxes in the images. If the size of a bounding box is less than
             ``min_size``, it would be add to ignored field.
         img_subdir (str): Subdir where images are stored. Default: JPEGImages.
-        ann_subdir (str): Subdir where annotations are. Default: Annotations.
+        ann_subdir (str): Subdir where Annotations are. Default: Annotations.
     """
 
     def __init__(self,

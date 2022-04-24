@@ -235,7 +235,7 @@ pip install cityscapesscripts
 python tools/dataset_converters/cityscapes.py \
     ./data/cityscapes \
     --nproc 8 \
-    --out-dir ./data/cityscapes/annotations
+    --out-dir ./data/cityscapes/Annotations
 ```
 
 ### 测试现有模型

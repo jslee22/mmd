@@ -69,7 +69,7 @@ def _create_dummy_coco_json(json_name):
 
     fake_json = {
         'images': [image],
-        'annotations':
+        'Annotations':
         [annotation_1, annotation_2, annotation_3, annotation_4],
         'categories': categories
     }
